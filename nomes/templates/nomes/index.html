@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Adote um Nome de Pet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+        .nome {
+            font-size: 2em;
+            margin-top: 20px;
+            color: #444;
+        }
+        button {
+            padding: 10px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            background-color: #44c767;
+            color: white;
+            border: none;
+            border-radius: 8px;
+        }
+        button:hover {
+            background-color: #5cbf2a;
+        }
+    </style>
+</head>
+<body>
+    <h1>🐾 Adote um Nome de Pet 🐾</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Gerar nome</button>
+    </form>
+
+    {% if nome %}
+        <div class="nome">
+            <p>Nome gerado: <strong>{{ nome.nome }}</strong></p>
+            <p>Este nome já foi sorteado {{ nome.cliques }} vez(es)</p>
+        </div>
+    {% endif %}
+</body>
+</html>
